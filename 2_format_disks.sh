@@ -23,8 +23,8 @@ sgdisk     -n4:0:+100G        -t4:BF00 $DISK1
 sgdisk     -n4:0:+100G        -t4:BF00 $DISK2
 
 # log
-sgdisk     -n4:0:+4G        -t5:BF00 $DISK1
-sgdisk     -n4:0:+4G        -t5:BF00 $DISK2
+sgdisk     -n5:0:+4G        -t5:BF01 $DISK1
+sgdisk     -n5:0:+4G        -t5:BF01 $DISK2
 
 zpool create \
     -o cachefile=/etc/zfs/zpool.cache \
