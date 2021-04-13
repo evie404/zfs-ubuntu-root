@@ -21,7 +21,7 @@ echo 'deb http://security.ubuntu.com/ubuntu focal-security main restricted unive
 mount --rbind /dev  /mnt/dev
 mount --rbind /proc /mnt/proc
 mount --rbind /sys  /mnt/sys
-chroot /mnt /usr/bin/env DISK=$DISK1 UUID=$UUID bash --login
+chroot /mnt /usr/bin/env DISK1=$DISK1 DISK2=$DISK2 UUID=$UUID bash --login
 
 apt update
 dpkg-reconfigure locales tzdata keyboard-configuration console-setup
