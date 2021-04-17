@@ -26,6 +26,7 @@ sgdisk -n4:0:+140G -t4:BF00 $DISK2
 sgdisk -n5:0:+4G -t5:BF01 $DISK1
 sgdisk -n5:0:+4G -t5:BF01 $DISK2
 
+# this part might fail if there are prior partitions
 zpool create \
 	-o cachefile=/etc/zfs/zpool.cache \
 	-o ashift=12 -o autotrim=on -d \
@@ -47,6 +48,7 @@ zpool create \
 	$DISK1-part3 \
 	$DISK2-part3
 
+# this part might fail if there are prior partitions
 zpool create \
 	-o ashift=12 -o autotrim=on \
 	-O acltype=posixacl -O canmount=off -O compression=lz4 \
