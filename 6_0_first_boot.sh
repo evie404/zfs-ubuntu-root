@@ -11,8 +11,8 @@ vi /etc/ssh/sshd_config
 
 exit
 
-mount | grep -v zfs | tac | awk '/\/mnt/ {print $3}' | \
-    xargs -i{} umount -lf {}
+mount | grep -v zfs | tac | awk '/\/mnt/ {print $3}' |
+	xargs -i{} umount -lf {}
 zpool export -a
 
 reboot

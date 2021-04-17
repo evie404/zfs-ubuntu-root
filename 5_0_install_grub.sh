@@ -22,7 +22,7 @@ vi /etc/default/grub
 update-grub
 
 grub-install --target=x86_64-efi --efi-directory=/boot/efi \
-    --bootloader-id=ubuntu --recheck --no-floppy
+	--bootloader-id=ubuntu --recheck --no-floppy
 
 systemctl mask grub-initrd-fallback.service
 

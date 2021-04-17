@@ -18,10 +18,10 @@ apt install --yes ubuntu-standard
 # echo "  version: 2" >> /etc/netplan/01-network-manager-all.yaml
 # echo "  renderer: NetworkManager" >> /etc/netplan/01-network-manager-all.yaml
 
-for file in /etc/logrotate.d/* ; do
-    if grep -Eq "(^|[^#y])compress" "$file" ; then
-        sed -i -r "s/(^|[^#y])(compress)/\1#\2/" "$file"
-    fi
+for file in /etc/logrotate.d/*; do
+	if grep -Eq "(^|[^#y])compress" "$file"; then
+		sed -i -r "s/(^|[^#y])(compress)/\1#\2/" "$file"
+	fi
 done
 
 reboot

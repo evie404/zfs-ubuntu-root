@@ -7,21 +7,21 @@ zfs create -o canmount=off -o mountpoint=none rpool/ROOT
 zfs create -o canmount=off -o mountpoint=none bpool/BOOT
 
 UUID=$(dd if=/dev/urandom bs=1 count=100 2>/dev/null |
-    tr -dc 'a-z0-9' | cut -c-6)
+	tr -dc 'a-z0-9' | cut -c-6)
 
 zfs create -o mountpoint=/ \
-    -o com.ubuntu.zsys:bootfs=yes \
-    -o com.ubuntu.zsys:last-used=$(date +%s) rpool/ROOT/ubuntu_$UUID
+	-o com.ubuntu.zsys:bootfs=yes \
+	-o com.ubuntu.zsys:last-used=$(date +%s) rpool/ROOT/ubuntu_$UUID
 
 zfs create -o mountpoint=/boot bpool/BOOT/ubuntu_$UUID
 
 zfs create -o com.ubuntu.zsys:bootfs=no \
-    rpool/ROOT/ubuntu_$UUID/srv
+	rpool/ROOT/ubuntu_$UUID/srv
 zfs create -o com.ubuntu.zsys:bootfs=no -o canmount=off \
-    rpool/ROOT/ubuntu_$UUID/usr
+	rpool/ROOT/ubuntu_$UUID/usr
 zfs create rpool/ROOT/ubuntu_$UUID/usr/local
 zfs create -o com.ubuntu.zsys:bootfs=no -o canmount=off \
-    rpool/ROOT/ubuntu_$UUID/var
+	rpool/ROOT/ubuntu_$UUID/var
 zfs create rpool/ROOT/ubuntu_$UUID/var/games
 zfs create rpool/ROOT/ubuntu_$UUID/var/lib
 zfs create rpool/ROOT/ubuntu_$UUID/var/lib/AccountsService
@@ -35,10 +35,10 @@ zfs create rpool/ROOT/ubuntu_$UUID/var/spool
 zfs create rpool/ROOT/ubuntu_$UUID/var/www
 
 zfs create -o canmount=off -o mountpoint=/ \
-    rpool/USERDATA
+	rpool/USERDATA
 zfs create -o com.ubuntu.zsys:bootfs-datasets=rpool/ROOT/ubuntu_$UUID \
-    -o canmount=on -o mountpoint=/root \
-    rpool/USERDATA/root_$UUID
+	-o canmount=on -o mountpoint=/root \
+	rpool/USERDATA/root_$UUID
 chmod 700 /mnt/root
 
 zfs create -o com.ubuntu.zsys:bootfs=no bpool/grub
