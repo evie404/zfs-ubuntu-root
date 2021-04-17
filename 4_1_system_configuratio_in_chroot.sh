@@ -3,6 +3,8 @@
 set -e
 set -x
 
+# TODO: check env vars exist
+
 apt update
 dpkg-reconfigure locales tzdata keyboard-configuration console-setup
 
