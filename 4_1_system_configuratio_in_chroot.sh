@@ -19,7 +19,8 @@ echo /dev/disk/by-uuid/$(blkid -s UUID -o value ${DISK1}-part1) \
 	/boot/efi vfat defaults 0 0 >>/etc/fstab
 mount /boot/efi
 
-mkdir /boot/efi/grub /boot/grub
+mkdir -p /boot/efi/grub
+mkdir -p /boot/grub
 echo /boot/efi/grub /boot/grub none defaults,bind 0 0 >>/etc/fstab
 mount /boot/grub
 
