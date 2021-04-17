@@ -6,7 +6,7 @@ set -x
 zfs create -o canmount=off -o mountpoint=none rpool/ROOT
 zfs create -o canmount=off -o mountpoint=none bpool/BOOT
 
-UUID=$(dd if=/dev/urandom bs=1 count=100 2>/dev/null |
+export UUID=$(dd if=/dev/urandom bs=1 count=100 2>/dev/null |
 	tr -dc 'a-z0-9' | cut -c-6)
 
 zfs create -o mountpoint=/ \
