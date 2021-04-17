@@ -15,16 +15,16 @@ sgdisk -n2:0:+500M -t2:FD00 $DISK1
 sgdisk -n2:0:+500M -t2:FD00 $DISK2
 
 # bpool
-sgdisk -n3:0:+2G -t3:BE00 ${DISK1}
-sgdisk -n3:0:+2G -t3:BE00 ${DISK2}
+sgdisk -n3:0:+2G -t3:BE00 $DISK1
+sgdisk -n3:0:+2G -t3:BE00 $DISK2
 
 # rpool
-sgdisk -n4:0:+140G -t4:BF00 ${DISK1}
-sgdisk -n4:0:+140G -t4:BF00 ${DISK2}
+sgdisk -n4:0:+140G -t4:BF00 $DISK1
+sgdisk -n4:0:+140G -t4:BF00 $DISK2
 
 # log
-sgdisk -n5:0:+4G -t5:BF01 ${DISK1}
-sgdisk -n5:0:+4G -t5:BF01 ${DISK2}
+sgdisk -n5:0:+4G -t5:BF01 $DISK1
+sgdisk -n5:0:+4G -t5:BF01 $DISK2
 
 zpool create \
 	-o cachefile=/etc/zfs/zpool.cache \
@@ -44,8 +44,8 @@ zpool create \
 	-O devices=off -O normalization=formD -O relatime=on -O xattr=sa \
 	-O mountpoint=/boot -R /mnt \
 	bpool mirror \
-	${DISK1}-part3 \
-	${DISK2}-part3
+	$DISK1-part3 \
+	$DISK2-part3
 
 zpool create \
 	-o ashift=12 -o autotrim=on \
@@ -53,5 +53,5 @@ zpool create \
 	-O dnodesize=auto -O normalization=formD -O relatime=on \
 	-O xattr=sa -O mountpoint=/ -R /mnt \
 	rpool mirror \
-	${DISK1}-part4 \
-	${DISK2}-part4
+	$DISK1-part4 \
+	$DISK2-part4
